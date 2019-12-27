@@ -3,14 +3,13 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
-import { MessageService } from './message.service';
+import { Hero } from '../../store/heroes/heroes.state.model';
+import { MessagesService } from '../messages/messages.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HeroService {
+export class HeroesService {
   private heroesUrl = 'api/heroes';  // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,7 +17,7 @@ export class HeroService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
+    private messageService: MessagesService
   ) { }
 
   /** Log a HeroService message with the MessageService */
@@ -39,7 +38,7 @@ export class HeroService {
     };
   }
 
-  getHeroes(): Observable<Hero[]> {
+  getHeroesList(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
         tap(_ => this.log('fetched heroes')),
