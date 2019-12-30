@@ -2,7 +2,7 @@ import {Action, createSelector, Selector, State, StateContext} from '@ngxs/store
 import {HeroesStateModel, Hero} from './heroes.state.model';
 // import {LoadingStateEnum} from '@shared/enums/loadingState.enum';
 import {
-    // CreateHero,
+    CreateHero,
     // GetHero,
     GetHeroesList,
     // UpdateHero
@@ -105,45 +105,37 @@ export class HeroesState {
     //             return of();
     //         }));
     // }
-    //
-    // /**
-    //  * method for creating client
-    //  * @param patchState - method for patching state
-    //  */
-    // @Action(CreateClient)
-    // createClient({patchState, getState}: StateContext<ClientsStateModel>, {payload}: CreateClient) {
-    //     patchState({loadingState: LoadingStateEnum.Loading});
-    //     return this.clientSvc.saveClient(payload).pipe(tap((result) => {
-    //             console.log(result);
-    //             const {
-    //                 passport_name, passport_middlename, passport_lastname,
-    //                 email, personal_phone
-    //             } = payload;
-    //             const {clientsMap} = getState();
-    //
-    //             clientsMap.set(result.id,
-    //                 {
-    //                     id: result.id,
-    //                     passport_name,
-    //                     passport_middlename,
-    //                     passport_lastname,
-    //                     orders_count: 0,
-    //                     e_mail: email,
-    //                     personal_phone,
-    //                     region: null
-    //                 }
-    //             );
-    //             patchState({
-    //                 loadingState: LoadingStateEnum.Loaded,
-    //                 clientsMap: new Map<string, ClientItemPayloadInterface>(clientsMap)
-    //             });
-    //         }),
-    //         catchError(err => {
-    //             console.error(err);
-    //             return of();
-    //         }));
-    // }
-    //
+
+    /**
+     * method for creating client
+     * @param patchState - method for patching state
+     */
+    @Action(CreateHero)
+    CreateHero({patchState, getState}: StateContext<HeroesStateModel>, {payload}: CreateHero) {
+        // patchState({loadingState: LoadingStateEnum.Loading});
+        return this.heroesService.addHero(payload).pipe(
+          tap((result) => {
+                console.log(result);
+                // const {
+                //     id, name
+                // } = payload;
+                const {heroes} = getState();
+
+                patchState({
+                    // loadingState: LoadingStateEnum.Loaded,
+                    // clientsMap: new Map<string, ClientItemPayloadInterface>(clientsMap)
+                  heroes: [
+                    ...heroes,
+                    result
+                  ]
+                });
+            }),
+            catchError(err => {
+                console.error(err);
+                return of();
+            }));
+    }
+
     // /**
     //  * method for creating client
     //  * @param patchState - method for patching state

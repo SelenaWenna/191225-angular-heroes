@@ -17,16 +17,16 @@ export class GetHeroesList {
 //     constructor(public payload) {
 //     }
 // }
-// /**
-//  * action for creating hero from backend
-//  */
-// export class CreateHero {
-//     static readonly type = '[Heroes] Create hero';
-//
-//   constructor(public payload: Hero) {
-//   }
-// }
-//
+/**
+ * action for creating hero from backend
+ */
+export class CreateHero {
+    static readonly type = '[Heroes] Create hero';
+
+  constructor(public payload: Hero) {
+  }
+}
+
 // /**
 //  * action for updating hero from backend
 //  */

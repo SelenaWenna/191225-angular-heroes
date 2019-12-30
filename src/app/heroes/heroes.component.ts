@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Hero} from '../state/heroes/heroes.state.model';
 import {Select, Store} from '@ngxs/store';
 import {HeroesState} from '../state/heroes/heroes.state';
-import {GetHeroesList} from '../state/heroes/heroes.actions';
+import {CreateHero, GetHeroesList} from '../state/heroes/heroes.actions';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -17,14 +17,11 @@ export class HeroesComponent implements OnInit {
     this.store.dispatch(new GetHeroesList());
   }
 
-  // add(name: string): void {
-  //   name = name.trim();
-  //   if (!name) { return; }
-  //   this.heroService.addHero({ name } as Hero)
-  //     .subscribe(hero => {
-  //       this.heroes.push(hero);
-  //     });
-  // }
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.store.dispatch(new CreateHero({ name } as Hero));
+  }
   // delete(hero: Hero): void {
   //   // this.heroes = this.heroes.filter(h => h !== hero);
   //   this.store.dispatch(new DeleteHero(hero));
