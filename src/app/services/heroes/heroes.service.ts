@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError, map, tap} from 'rxjs/operators';
 
-import { Hero } from '../../store/heroes/heroes.state.model';
-import { MessagesService } from '../messages/messages.service';
+import {Hero} from '../../state/heroes/heroes.state.model';
+import {MessagesService} from '../messages/messages.service';
 
 @Injectable({
   providedIn: 'root'

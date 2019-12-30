@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Hero} from '../store/heroes/heroes.state.model';
+import {Hero} from '../state/heroes/heroes.state.model';
 import {Select, Store} from '@ngxs/store';
-import {HeroesState} from '../store/heroes/heroes.state';
-import {GetHeroesList} from '../store/heroes/heroes.actions';
+import {HeroesState} from '../state/heroes/heroes.state';
+import {GetHeroesList} from '../state/heroes/heroes.actions';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -25,10 +25,10 @@ export class HeroesComponent implements OnInit {
   //       this.heroes.push(hero);
   //     });
   // }
-  delete(hero: Hero): void {
-    // this.heroes = this.heroes.filter(h => h !== hero);
-    this.store.dispatch(new DeleteHero(hero));
-  }
+  // delete(hero: Hero): void {
+  //   // this.heroes = this.heroes.filter(h => h !== hero);
+  //   this.store.dispatch(new DeleteHero(hero));
+  // }
 
   ngOnInit() {}
 }
