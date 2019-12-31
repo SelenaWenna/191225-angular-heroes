@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Hero} from '../state/heroes/heroes.state.model';
 import {Select, Store} from '@ngxs/store';
 import {HeroesState} from '../state/heroes/heroes.state';
-import {CreateHero, GetHeroesList} from '../state/heroes/heroes.actions';
+import {CreateHero, GetHeroesList, DeleteHero} from '../state/heroes/heroes.actions';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -11,7 +11,8 @@ import {Observable} from 'rxjs';
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
-  @Select(HeroesState.heroes) heroes: Observable<Hero[]>;
+  @Select(HeroesState.heroes)
+  heroes: Observable<Hero[]>;
 
   constructor(private store: Store) {
     this.store.dispatch(new GetHeroesList());
@@ -22,10 +23,9 @@ export class HeroesComponent implements OnInit {
     if (!name) { return; }
     this.store.dispatch(new CreateHero({ name } as Hero));
   }
-  // delete(hero: Hero): void {
-  //   // this.heroes = this.heroes.filter(h => h !== hero);
-  //   this.store.dispatch(new DeleteHero(hero));
-  // }
+  delete(hero: Hero): void {
+    this.store.dispatch(new DeleteHero(hero));
+  }
 
   ngOnInit() {}
 }

@@ -11,28 +11,38 @@ export class GetHeroesList {
 /**
  * action for getting hero from backend
  */
-// export class GetHero {
-//     static readonly type = '[Heroes] Get hero';
-//
-//     constructor(public payload) {
-//     }
-// }
+export class GetHero {
+    static readonly type = '[Heroes] Get hero';
+
+    constructor(public payload) {
+    }
+}
 /**
  * action for creating hero from backend
  */
 export class CreateHero {
-    static readonly type = '[Heroes] Create hero';
+  static readonly type = '[Heroes] Create hero';
 
   constructor(public payload: Hero) {
   }
 }
 
-// /**
-//  * action for updating hero from backend
-//  */
-// export class UpdateHero {
-//     static readonly type = '[Heroes] Update hero';
-//
-//     constructor(public payload: {id: string, name: string}) {
-//     }
-// }
+/**
+ * action for deleting hero from backend
+ */
+export class UpdateHero {
+    static readonly type = '[Heroes] Update hero';
+
+    constructor(public payload: Hero) {
+    }
+}
+
+/**
+ * action for deleting hero from backend
+ */
+export class DeleteHero {
+  static readonly type = '[Heroes] Delete hero';
+
+  constructor(public payload: Hero) {
+  }
+}

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Hero } from '../state/heroes/heroes.state.model';
-// import { HeroesService } from '../services/heroes/heroes.service';
+import {Component, OnInit} from '@angular/core';
+import {Hero} from '../state/heroes/heroes.state.model';
+import {GetHeroesList} from '../state/heroes/heroes.actions';
+import {HeroesState} from '../state/heroes/heroes.state';
+import {Store} from '@ngxs/store';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,20 +10,15 @@ import { Hero } from '../state/heroes/heroes.state.model';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
   heroes: Hero[];
 
-  constructor() {
-    // this.getHeroes();
+  constructor(
+    private store: Store
+  ) {
+    this.store.dispatch(new GetHeroesList());
+    this.store.select(HeroesState.heroes)
+      .subscribe(res => { this.heroes = res; });
   }
 
-  // getHeroes(): void {
-  //   this.heroService.getHeroes()
-  //     .subscribe(heroes => {
-  //       this.heroes = heroes.slice(1, 5);
-  //     });
-  // }
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
