@@ -13,11 +13,11 @@ import {HeroesState} from './state/heroes/heroes.state';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HeroesComponent} from './heroes/heroes.component';
-import {HeroDetailComponent} from './hero-detail/hero-detail.component';
-import {MessagesComponent} from './messages/messages.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {NotFoundComponent} from './not-found/not-found.component';
+import {HeroesComponent} from './pages/heroes/heroes.component';
+import {HeroDetailComponent} from './pages/hero-detail/hero-detail.component';
+import {MessagesComponent} from './components/messages/messages.component';
+import {DashboardComponent} from './pages/dashboard/dashboard.component';
+import {NotFoundComponent} from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [

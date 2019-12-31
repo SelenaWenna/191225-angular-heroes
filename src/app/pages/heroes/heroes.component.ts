@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Hero} from '../state/heroes/heroes.state.model';
+import {Hero} from '../../state/heroes/heroes.state.model';
 import {Select, Store} from '@ngxs/store';
-import {HeroesState} from '../state/heroes/heroes.state';
-import {CreateHero, GetHeroesList, DeleteHero} from '../state/heroes/heroes.actions';
+import {HeroesState} from '../../state/heroes/heroes.state';
+import {CreateHero, GetHeroesList, DeleteHero} from '../../state/heroes/heroes.actions';
 import {Observable} from 'rxjs';
 
 @Component({

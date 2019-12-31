@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Hero} from '../state/heroes/heroes.state.model';
+import {Hero} from '../../state/heroes/heroes.state.model';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {Store} from '@ngxs/store';
-import {GetHero, UpdateHero} from '../state/heroes/heroes.actions';
-import {HeroesState} from '../state/heroes/heroes.state';
+import {GetHero, UpdateHero} from '../../state/heroes/heroes.actions';
+import {HeroesState} from '../../state/heroes/heroes.state';
 
 @Component({
   selector: 'app-hero-detail',

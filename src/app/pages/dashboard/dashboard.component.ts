@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Hero} from '../state/heroes/heroes.state.model';
-import {GetHeroesList} from '../state/heroes/heroes.actions';
-import {HeroesState} from '../state/heroes/heroes.state';
+import {Hero} from '../../state/heroes/heroes.state.model';
+import {GetHeroesList} from '../../state/heroes/heroes.actions';
+import {HeroesState} from '../../state/heroes/heroes.state';
 import {Store} from '@ngxs/store';
 
 @Component({
